@@ -30,7 +30,6 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 - Debug = false
 - api网址加？不识别
 - 使用from django.test import TestCase 进行单元测试
-- tag和comment的article_id改为article-id,增加可读性
 
 
 
