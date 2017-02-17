@@ -5,7 +5,7 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 - 实现三个并列的 article tag comment 的api，可以新增和列表。
 - 登录功能
 - 序列化和反序列化
-- api权限设置为管理员（不科学,已修改
+- api权限设置为管理员（不科学,已修改）
 - api分页（10个每页）
 
 
