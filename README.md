@@ -40,7 +40,7 @@ http://127.0.0.1:8000/articles/ Accept:text/html
 ## 或者直接附加一个格式后缀
 ### JSON 后缀
 http://127.0.0.1:8000/articles.json 
-### JSON 后缀
+### api 后缀
 http://127.0.0.1:8000/articles.api   
 
 ## 同样，我们可以使用Content-Type头来控制我们发送的请求的格式。
