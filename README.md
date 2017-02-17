@@ -29,6 +29,8 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 - 使用from django.test import TestCase 进行单元测试
 - tag和comment的article_id改为article-id,增加可读性
 - pep8 review
+
+
 # 使用
 ## 我们可以通过使用Accept header来控制回传的格式。
 
