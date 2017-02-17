@@ -33,13 +33,16 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 
 # 使用
 ## 我们可以通过使用Accept header来控制回传的格式。
-
-http://127.0.0.1:8000/articles/ Accept:application/json  # 请求 JSON
-http://127.0.0.1:8000/articles/ Accept:text/html         # 请求 HTML
+### 请求 JSON
+http://127.0.0.1:8000/articles/ Accept:application/json
+### 请求 HTML
+http://127.0.0.1:8000/articles/ Accept:text/html        
 ## 或者直接附加一个格式后缀
+### JSON 后缀
+http://127.0.0.1:8000/articles.json 
+### JSON 后缀
+http://127.0.0.1:8000/articles.api   
 
-http://127.0.0.1:8000/articles.json  # JSON 后缀
-http://127.0.0.1:8000/articles.api   # 可浏览的 API 后缀
 ## 同样，我们可以使用Content-Type头来控制我们发送的请求的格式。
 
 ## 使用表单POST数据
