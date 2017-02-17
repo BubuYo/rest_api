@@ -11,6 +11,7 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 
 # 已补充：
 - 补充实现article增删改查
+- 新增api统一入口
 - views中的多行注释可以出现在网页上
 - 新的权限处理方法：
 
@@ -51,12 +52,14 @@ curl -X POST -d tag=api -d article_id=1 -H 'Accept: application/json; indent=4' 
 ## 使用JSON来POST数据
 http --json POST http://127.0.0.1:8000/tags/ tag="lucky" article_id=1
 
+HTTP/1.0 403 Forbidden
+Allow: GET, POST, HEAD, OPTIONS
+Content-Type: application/json
+Date: Fri, 17 Feb 2017 09:07:32 GMT
+Server: WSGIServer/0.1 Python/2.7.12
+Vary: Accept, Cookie
+X-Frame-Options: SAMEORIGIN
+
 {
-    "id": 4,
-    "title": "",
-    "code": "print 456",
-    "linenos": false,
-    "language": "python",
-    "style": "friendly"
+    "detail": "Authentication credentials were not provided."
 }
-##如果你在上述的HTTP请求中加一个--debug，你将看到请求的类型在请求头里
