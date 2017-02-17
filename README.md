@@ -12,6 +12,8 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 # 已补充：
 - 补充实现article增删改查
 - 新增api统一入口
+![root](https://github.com/BubuYo/rest_api/blob/master/root.png)
+- pep8 review
 - views中的多行注释可以出现在网页上
 - 新的权限处理方法：
 
@@ -29,7 +31,7 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 - api网址加？不识别
 - 使用from django.test import TestCase 进行单元测试
 - tag和comment的article_id改为article-id,增加可读性
-- pep8 review
+
 
 
 # 使用
