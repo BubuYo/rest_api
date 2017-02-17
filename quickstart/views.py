@@ -1,8 +1,7 @@
-#coding=utf-8
+# coding=utf-8
 from django.shortcuts import render
 
 # Create your views here.
-# from models import Article, Tag, Comment
 
 '''
 使用基于类的视图而不是基于函数的视图来编写API视图。
@@ -17,33 +16,37 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 
-@api_view(['GET'])
 
+@api_view(['GET'])
 def api_root(request, format=None):
 
     return Response({
 
-    'users': reverse('user-list', request=request, format=format),
-    'articles': reverse('article-list', request=request, format=format),
-    'tags': reverse('tag-list', request=request, format=format),
-    'comments': reverse('comment-list', request=request, format=format),
+        'users': reverse('user-list', request=request, format=format),
+        'articles': reverse('article-list', request=request, format=format),
+        'tags': reverse('tag-list', request=request, format=format),
+        'comments': reverse('comment-list', request=request, format=format),
 
     })
+
 
 class ArticleList(generics.ListCreateAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+
 class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = (permissions.IsAdminUser,)
 
+
 class TagList(generics.ListCreateAPIView):
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 class CommentList(generics.ListCreateAPIView):
     '''
@@ -52,16 +55,19 @@ class CommentList(generics.ListCreateAPIView):
     为了解决这个问题。我们需要重写snippet视图中 .perform_create() 方法，
     这个 方法准许我们修改实例如何被保存、处理任何由request或requested URL传递进来的隐含数据。
     '''
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+
 class CommentDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
 
 class UserList(generics.ListAPIView):
     # def perform_create(self, serializer):
@@ -69,9 +75,8 @@ class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+
 class UserDetail(generics.RetrieveAPIView):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-

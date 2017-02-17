@@ -1,4 +1,4 @@
-#coding=utf-8
+# coding=utf-8
 """tutorial URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -15,34 +15,6 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-
-
-# from django.conf.urls import url, include
-# from rest_framework import routers
-# from tutorial.quickstart import views
-#
-# router = routers.DefaultRouter()
-# router.register(r'article', views.ArticleViewSet)
-# router.register(r'tag', views.TagViewSet)
-# router.register(r'comment', views.CommentViewSet)
-#
-#
-# # 使用URL路由来管理我们的API
-# # 另外添加登录相关的URL
-# urlpatterns = [
-#     url(r'^', include(router.urls)),
-#     url(r'^plist/(.+)/$', views.helloParam),
-#     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-# ]
-
-# from django.conf.urls import url
-# from rest_framework_swagger.views import get_swagger_view
-#
-# schema_view = get_swagger_view(title='article')
-#
-# urlpatterns = [
-#     url(r'^$', schema_view)
-# ]
 
 
 from django.conf.urls import url, include
@@ -65,16 +37,19 @@ urlpatterns = [
     url(r'^tags/$', views.TagList.as_view(), name='tag-list'),
     url(r'^comments/$', views.CommentList.as_view(), name='comment-list'),
 
-    url(r'^comments/(?P<pk>[0-9]+)$', views.CommentDetail.as_view(), name='comment-detail'),
-    url(r'^articles/(?P<pk>[0-9]+)$', views.ArticleDetail.as_view(), name='article-detail'),
+    url(r'^comments/(?P<pk>[0-9]+)$',
+        views.CommentDetail.as_view(), name='comment-detail'),
+    url(r'^articles/(?P<pk>[0-9]+)$',
+        views.ArticleDetail.as_view(), name='article-detail'),
 
     url(r'^users/$', views.UserList.as_view(), name='user-list'),
-    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='user-detail'),
+    url(r'^users/(?P<pk>[0-9]+)/$',
+        views.UserDetail.as_view(), name='user-detail'),
 
     url(r'^api-auth/', include('rest_framework.urls')),
 
 ]
 
 
-#添加额外的URL模式不是必须的，但使用它我们可以用一种干净，简单的方式来引用某个特定的格式
+# 添加额外的URL模式不是必须的，但使用它我们可以用一种干净，简单的方式来引用某个特定的格式
 urlpatterns = format_suffix_patterns(urlpatterns)
