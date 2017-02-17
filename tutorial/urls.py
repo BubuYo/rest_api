@@ -37,10 +37,12 @@ urlpatterns = [
     url(r'^tags/$', views.TagList.as_view(), name='tag-list'),
     url(r'^comments/$', views.CommentList.as_view(), name='comment-list'),
 
-    url(r'^comments/(?P<pk>[0-9]+)$',
-        views.CommentDetail.as_view(), name='comment-detail'),
     url(r'^articles/(?P<pk>[0-9]+)$',
         views.ArticleDetail.as_view(), name='article-detail'),
+    url(r'^tags/(?P<pk>[0-9]+)$',
+        views.TagDetail.as_view(), name='tag-detail'),
+    url(r'^comments/(?P<pk>[0-9]+)$',
+        views.CommentDetail.as_view(), name='comment-detail'),
 
     url(r'^users/$', views.UserList.as_view(), name='user-list'),
     url(r'^users/(?P<pk>[0-9]+)/$',
