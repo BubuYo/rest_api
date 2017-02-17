@@ -1,15 +1,9 @@
 #coding=utf-8
 from __future__ import unicode_literals
-
 from django.db import models
-
-# Create your models here.
-# from pygments.lexers import get_lexer_by_name
-# from pygments.formatters.html import HtmlFormatter
-# from pygments import highlight
-
-
 from django.contrib.auth.models import User
+
+
 class UserComment(User):
 
     comments = models.ForeignKey('Comment', related_name='quickstart')
@@ -51,26 +45,3 @@ class Comment(models.Model):
 
     class Meta:
         ordering = ('created',)
-
-
-    # def save(self, *args, **kwargs):
-    #
-    #     """
-    #
-    #     使用pygments来创建高亮的HTML代码。
-    #
-    #     """
-    #
-    #     lexer = get_lexer_by_name(self.language)
-    #
-    #     linenos = self.linenos and 'table' or False
-    #
-    #     options = self.title and {'title': self.title} or {}
-    #
-    #     formatter = HtmlFormatter(style=self.style, linenos=linenos,
-    #
-    #                               full=True, **options)
-    #
-    #     self.highlighted = highlight(self.code, lexer, formatter)
-    #
-    #     super(Comment, self).save(*args, **kwargs)
