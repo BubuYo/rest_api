@@ -1,16 +1,17 @@
 #coding=utf-8
 from rest_framework import serializers
 from models import Article, Tag, Comment
-from models import UserComment as User
+from django.contrib.auth.models import User
+
 class ArticleSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Article
-        fields = ('id', 'created', 'title', 'content', 'tag')
+        fields = ('url', 'created', 'title', 'content', 'tag')
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
-        fields = ('tag', 'article_id')
+        fields = ('tag', 'article_id', 'url')
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     '''
@@ -21,12 +22,10 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Comment
-        fields = ('created', 'article_id', 'name', 'email', 'content', 'owner')
+        fields = ('created', 'article_id', 'name', 'email', 'content', 'owner', 'url')
 
-class UserSerializer(serializers.ModelSerializer):
-
-    comments = serializers.PrimaryKeyRelatedField(many=True, queryset=Comment.objects.all())
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    # comments = serializers.HyperlinkedRelatedField(many=True, view_name='comment-detail', read_only=True)
     class Meta:
         model = User
-        fields = ('id', 'username', 'comments')
-
+        fields = ('url', 'username')

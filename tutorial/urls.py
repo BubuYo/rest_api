@@ -59,14 +59,22 @@ Detail类负责实现增删改查
 '''
 urlpatterns = [
 
-    url(r'^articles/$', views.ArticleList.as_view()),
-    url(r'^tags/$', views.TagList.as_view()),
-    url(r'^comments/$', views.CommentList.as_view()),
-    url(r'^articles/(?P<pk>[0-9]+)$', views.ArticleDetail.as_view()),
+    url(r'^$', views.api_root),
+
+    url(r'^articles/$', views.ArticleList.as_view(), name='article-list'),
+    url(r'^tags/$', views.TagList.as_view(), name='tag-list'),
+    url(r'^comments/$', views.CommentList.as_view(), name='comment-list'),
+
+    url(r'^comments/(?P<pk>[0-9]+)$', views.CommentDetail.as_view(), name='comment-detail'),
+    url(r'^articles/(?P<pk>[0-9]+)$', views.ArticleDetail.as_view(), name='article-detail'),
+
+    url(r'^users/$', views.UserList.as_view(), name='user-list'),
+    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view(), name='user-detail'),
+
     url(r'^api-auth/', include('rest_framework.urls')),
-    url(r'^users/$', views.UserList.as_view()),
-    url(r'^users/(?P<pk>[0-9]+)/$', views.UserDetail.as_view()),
 
 ]
+
+
 #添加额外的URL模式不是必须的，但使用它我们可以用一种干净，简单的方式来引用某个特定的格式
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -1,15 +1,6 @@
 #coding=utf-8
 from __future__ import unicode_literals
 from django.db import models
-from django.contrib.auth.models import User
-
-
-class UserComment(User):
-
-    comments = models.ForeignKey('Comment', related_name='quickstart')
-
-    # class Meta:
-    #     ordering = ('created',)
 
 
 class Article(models.Model):
