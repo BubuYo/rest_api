@@ -1,5 +1,11 @@
 # rest_api
-Blog api based on Django 1.9 and django rest framework3.5.4
+Blog api based on Django
+
+# Requirements
+- python 2.7
+- Django 1.9
+- Django REST framework 3.5.4
+
 # 初版：
 
 - 实现三个并列的 article tag comment 的api，可以新增和列表。
@@ -15,6 +21,7 @@ Blog api based on Django 1.9 and django rest framework3.5.4
 ![root](https://github.com/BubuYo/rest_api/blob/master/root.png)
 - pep8 review
 - views中的多行注释可以出现在网页上
+- 移除comment的owner字段
 - 新的权限处理方法：
 
         views中使用
