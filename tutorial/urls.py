@@ -23,7 +23,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from quickstart import views
 '''
-views中
+views中saΩ¢
 list类负责实现创建和列表
 Detail类负责实现增删改查
 考虑到要求是：article增删改查，tag和comment可以新增和列表

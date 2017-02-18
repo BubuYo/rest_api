@@ -31,7 +31,7 @@ class Comment(models.Model):
     name = models.CharField(max_length=100, blank=True, default='')
     email = models.EmailField()
     content = models.TextField()
-    owner = models.ForeignKey('auth.User', related_name='quickstart')
+    # owner = models.ForeignKey('auth.User', related_name='quickstart')
     # highlighted = models.TextField()
 
     class Meta:

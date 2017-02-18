@@ -61,8 +61,8 @@ class CommentList(generics.ListCreateAPIView):
     这个 方法准许我们修改实例如何被保存、处理任何由request或requested URL传递进来的隐含数据。
     '''
 
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+    # def perform_create(self, serializer):
+    #     serializer.save(owner=self.request.user)
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)

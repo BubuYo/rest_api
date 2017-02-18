@@ -22,12 +22,12 @@ class CommentSerializer(serializers.HyperlinkedModelSerializer):
     ReadOnlyField这种类型是只读的，用于进行序列化时候的展示，并且反序列化时不会被修改
     这里我们也可以使 用 CharField(read_only=True) 来替代它
     '''
-    owner = serializers.ReadOnlyField(source='owner.username')
+    # owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Comment
         fields = ('created', 'article_id', 'name',
-                  'email', 'content', 'owner', 'url')
+                  'email', 'content', 'url')
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
